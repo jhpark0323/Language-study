@@ -5,7 +5,7 @@ my_bingo = [list(map(int, input().split())) for _ in range(5)]
 
 my_bingo = np.array(my_bingo)
 
-print(my_bingo)
+# print(my_bingo)
 
 # 사회자가 부르는 순서
 mc = [list(map(int, input().split())) for _ in range(5)]
@@ -34,6 +34,7 @@ def find_num(num, bingo):
 
 # print(my_bingo[ls[0], ls[1]][0])
 
+bingo_cnt = 0
 cnt = 0
 # 먼저 사회자 빙고 순회
 for row in range(5):
@@ -44,15 +45,40 @@ for row in range(5):
         ls = find_num(n, my_bingo)
         # my_bingo에서 그 위치를 0으로 변경
         my_bingo[ls[0], ls[1]] = 0
-        print(my_bingo)
+        # print(my_bingo)
+
+        cnt += 1
 
         # 찾은 index가 y = -x 형태의 대각선 이면
         if ls[0][0] == ls[1][0]:
             # 그게 전부 0이면
             if my_bingo[0,0] == 0 and my_bingo[1,1] == 0 and my_bingo[2,2] == 0 and my_bingo[3,3] == 0 and my_bingo[4,4] == 0:
-                cnt += 1
-        # 찾은 index가 y = x 혀태의 대각선 이면
-        elif ls[0][0] == 4-ls[1][0]:
-            if my_bingo[0, 0] == 0 and my_bingo[1, 1] == 0 and my_bingo[2, 2] == 0 and my_bingo[3, 3] == 0 and my_bingo[4, 4] == 0:
-                pass
-                # 계속 풀기
+                bingo_cnt += 1
+        # 찾은 index가 y = x 형태의 대각선 이면
+        # 양쪽 대각선이 2,2의 index 빼고 다채워져있다가 마지막에 2,2가 채워지면 위의 경우와 지금경우가 다 적용되야함
+        # 그래서 여기도 if
+        if ls[0][0] == 4-ls[1][0]:
+            if my_bingo[4, 0] == 0 and my_bingo[3, 1] == 0 and my_bingo[2, 2] == 0 and my_bingo[1, 3] == 0 and my_bingo[0, 4] == 0:
+                bingo_cnt += 1
+
+        # 나머지의 경우 대각선을 생각할 필요 없음 -> 하지만 대각선에 들어갔던 경우도 여기서 다시 체크 할 필요는 있음
+        # -> elif가 아니고 if인 이유
+        # 채워졌을 때 그 행의 합이 0이면 bingo_cnt += 1
+        if sum(my_bingo[ls[0][0], :]) == 0:
+            bingo_cnt += 1
+
+        # 채워졌을 때 그 열의 합이 0이면 bingo_cnt += 1
+        if sum(my_bingo[:, ls[1][0]]) == 0:
+            bingo_cnt += 1
+
+        if bingo_cnt >= 3:
+            # print(cnt)
+            break
+
+
+        # print(bingo_cnt)
+
+    if bingo_cnt >= 3:
+        print(cnt)
+        break
+
