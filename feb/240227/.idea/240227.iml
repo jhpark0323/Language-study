@@ -4,5 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="0227" />
+    <orderEntry type="module" module-name="02_완전검색_그리디" />
   </component>
 </module>

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../algorithm 수업시간/0227/.idea/0227.iml" filepath="$PROJECT_DIR$/../../../algorithm 수업시간/0227/.idea/0227.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../TIL/03_algorithm_II/02_완전검색_그리디/.idea/02_완전검색_그리디.iml" filepath="$PROJECT_DIR$/../../../TIL/03_algorithm_II/02_완전검색_그리디/.idea/02_완전검색_그리디.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/240227.iml" filepath="$PROJECT_DIR$/.idea/240227.iml" />
     </modules>
   </component>
