@@ -1,36 +1,27 @@
 # k : 가지고 있는 랜선의 갯수, n : 필요한 랜선의 갯수
 k, n = map(int, input().split())
-
 ls = [int(input()) for _ in range(k)]
-
 # print(ls)
 
-# 최솟값
-min_len = min(ls)
-
+# 가능한 랜선의 최대 길이 범위 설정
+start, end = 1, max(ls)
 max_len_lansun = 0
-lansun = 0
-cnt = 0
-# 가지고 있는 랜선 중 제일 작은 선의 길이만큼 순회
-for i in range(1, min_len+1):
-    cnt = 0
 
-    # 모든 가지고 있는 랜선을 순회
-    for j in ls:
-        # print(j)
-        # cnt에 랜선을 1부터 올라가며 계산해봄
-        cnt += j // i
-        if cnt == n:
-            lansun = i
-            # print(lansun)
-            # 최댓값 갱신
-            if max_len_lansun < lansun:
-                max_len_lansun = lansun
+# 이진 탐색을 이용하여 최대 길이 찾기
+while start <= end:
+    mid = (start + end) // 2
+    total = 0
 
+    # mid 길이로 잘랐을 때 얻을 수 있는 랜선의 개수 계산
+    for l in ls:
+        total += l // mid
 
-        # cnt가 n보다 커지면 너무적음
-        if cnt > n:
-            break
-
+    # 필요한 랜선의 개수보다 많이 얻었으면 범위를 늘려서 길이를 늘림
+    if total >= n:
+        max_len_lansun = mid
+        start = mid + 1
+    # 필요한 랜선의 개수보다 부족하면 범위를 줄여서 길이를 줄임
+    else:
+        end = mid - 1
 
 print(max_len_lansun)
