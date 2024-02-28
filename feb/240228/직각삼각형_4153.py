@@ -11,7 +11,18 @@ while 1:
         arr.pop()
         break
 
-print(arr)
+# print(arr)
 
 for i in arr:
-    hypo = max(i)
+    # 제일 큰게 빗변
+    hypo = i.pop(i.index(max(i)))
+    # 남은 두개가 남은 변들
+    a, b = i[0], i[1]
+
+    if a ** 2 + b ** 2 == hypo ** 2:
+        answer = 'right'
+
+    else:
+        answer = 'wrong'
+
+    print(answer)
