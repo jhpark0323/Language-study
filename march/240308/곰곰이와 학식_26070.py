@@ -27,7 +27,9 @@ for _ in range(3):
 
     if a <= 0:
         if a == 0:
-            pass
+            # a가 0이나 음수이면 남은 갯수의 절댓값은 식권임
+            y += x // 3
+            x %= 3
         else:
             x = abs(a)
             # x는 끝났으니 가능한 전부 y로 넘겨줌
@@ -38,7 +40,9 @@ for _ in range(3):
 
     if b <= 0:
         if b == 0:
-            pass
+            # b가 0이나 음수이면 남은 갯수의 절댓값은 식권임
+            z += y // 3
+            y %= 3
         else:
             y = abs(b)
             # y는 끝났으니 가능한 전부 z로 넘겨줌
@@ -49,7 +53,9 @@ for _ in range(3):
 
     if c <= 0:
         if c == 0:
-            pass
+            # c가 0이나 음수이면 남은 갯수의 절댓값은 식권임
+            x += z // 3
+            z %= 3
         else:
             z = abs(c)
             # z는 끝났으니 가능한 전부 x로 넘겨줌
