@@ -12,22 +12,32 @@ for test_case in range(T):
     arr = input_data()
     arr = arr[1:-2]
     if arr:
-        arr = list(map(int, arr.split(',')))
+        arr = list(arr.split(','))
     else:
         arr = []
     arr = deque(arr)
     # print('arr :', arr)
 
     try:
+        dir = 0
         for i in func:
             if i == 'R':
-                arr.reverse()
+                dir = 1 - dir
+                # arr.reverse()
                 # print(arr)
 
             else:
-                arr.popleft()
-                # print(arr)
+                if not dir:
+                    arr.popleft()
+                else:
+                    arr.pop()
 
-        print(list(arr))
+        if dir:
+            arr.reverse()
+            answer = '[' + ','.join(list(arr)) + ']'
+            print(answer)
+        else:
+            answer = '[' + ','.join(list(arr)) + ']'
+            print(answer)
     except:
         print('error')
