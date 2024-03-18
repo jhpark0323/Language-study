@@ -24,14 +24,10 @@ for i in range(n+m):
 # print(ls_0)
 # print(ls_1)
 
-num = abs(sum(ls_0) - sum(ls_1))
-# print(num)
+num = 0
+while ls_0:
+    num += abs(ls_0.pop()-ls_1.pop())
 
 ans = num**2 / 2
 
-if ans == int(ans):
-    print(int(ans))
-else:
-    print(int(ans) + 1)
-
-# print(math.ceil(ans))
+print(math.ceil(ans))
