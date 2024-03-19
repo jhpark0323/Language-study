@@ -1,21 +1,19 @@
 import sys
 
-m = int(input())
+ipt = sys.stdin.readline
+m = int(ipt())
 
 s = set()
-ipt = sys.stdin.readline
 for i in range(m):
-    ipt_data = list(map(str, ipt().strip().split()))
-    # print(ipt_data)
+    # ipt_data = list(map(str, ipt().strip().split()))
+    ipt_data = ipt().strip().split()
+    print(ipt_data)
 
     if ipt_data[0] == 'add':
         s.add(ipt_data[1])
 
     elif ipt_data[0] == 'remove':
-        if ipt_data[1] in s:
-            s.remove(ipt_data[1])
-        else:
-            continue
+        s.discard(ipt_data[1])
 
     elif ipt_data[0] == 'check':
         if ipt_data[1] in s:
@@ -34,6 +32,6 @@ for i in range(m):
         # print(s)
 
     elif ipt_data[0] == 'empty':
-        s = set()
+        s.clear()
 
     # print(s)
