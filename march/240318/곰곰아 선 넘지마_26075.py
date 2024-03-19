@@ -1,7 +1,7 @@
 import math
 
 '''
-코시슈바르츠
+코시슈바르츠 -> X
 (a**2 + b**2)(x**2 + y**2) >= (x+y)**2
 -> (x**2 + y**2) >= (x+y)**2 / (a**2 + b**2)
 '''
@@ -28,6 +28,11 @@ num = 0
 while ls_0:
     num += abs(ls_0.pop()-ls_1.pop())
 
-ans = num**2 / 2
+a = num//2
+b = num-a
 
-print(math.ceil(ans))
+print(a**2 + b**2)
+
+# ans = num**2 / 2
+#
+# print(math.ceil(ans))
