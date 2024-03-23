@@ -53,7 +53,7 @@ for i in range(n):
         val_ls.append(angle(x1, y1, x2, y2))
     new_dict[new_ls[i]] = val_ls
 
-print(new_dict)
+# print(new_dict)
 
 # 빌딩 순회
 max_cnt = 0
@@ -65,23 +65,28 @@ for standard in range(n):
     # 오른쪽 최댓값
     max_r = 0
     cnt = 0
-    for j in range(n):
+    for j in range(n-1, -1, -1):
         # index가 기준보다 왼쪽에 있으면
         if j < standard:
-            # 왼쪽 최솟값 갱신 근데 0보다는 커야함
-            if min_l >= building[j] > 0:
+            if min_l >= building[j]:
+                if min_l > building[j]:
+                    cnt += 1
+                # 갱신
                 min_l = building[j]
-                # 왼쪽 최댓값 갱신시 cnt도 초기화
-                cnt = 0
-            # 최댓값이 갱신되지 않으면 cnt 하나 증가
-            else:
-                cnt += 1
 
-        elif j == standard:
-            continue
 
+    for j in range(n):
+        # # index가 기준보다 왼쪽에 있으면
+        # if j < standard:
+        #     # 왼쪽 최솟값 갱신
+        #     if min_l >= building[j]:
+        #         min_l = building[j]
+        #
+        #     # 최댓값이 갱신되지 않으면 cnt 하나 증가
+        #     else:
+        #         cnt += 1
         # index가 기준보다 오른쪽이면
-        else:
+        if standard < j:
             if max_r <= building[j]:
                 # 여기서는 최댓값 갱신시마다 cnt 1씩 더해줌
                 # 같을 때는 접하기 때문에 하나 더 올리지 않음
@@ -92,7 +97,7 @@ for standard in range(n):
 
     if max_cnt < cnt:
         max_cnt = cnt
-        idx = i
+        idx = standard
 
-
+print(new_dict[(6, 3)])
 print(max_cnt, idx)
