@@ -1,6 +1,7 @@
 import sys
 from collections import deque
 from itertools import combinations
+from copy import deepcopy
 
 input = sys.stdin.readline
 
@@ -15,6 +16,8 @@ dy = [-1, 0, 1]
 
 def kill(archor):
     # 2차원 ls 복사하기
+    # temp_matrix = deepcopy(matrix)
+    # deepcopy 안쓰고 복사
     temp_matrix = [x[:] for x in matrix]
 
     killed = [[0] * m for _ in range(n)]
@@ -50,6 +53,7 @@ def kill(archor):
 
 answer = 0
 
+# 3명의 궁수
 archor_pos = list(combinations([i for i in range(m)], 3))
 for a in archor_pos:
     answer = max(answer, kill(a))
