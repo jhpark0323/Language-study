@@ -36,12 +36,18 @@ def f(array, year):
                 else:
                     new_arr_size += 1
 
-    pprint(new_arr)
+    # pprint(new_arr)
     size = bfs(new_arr)
+    # print('size :', size)
+    # print('new_arr_size :', new_arr_size)
 
     # 사이즈가 같으면 다시 해야함
     if size == new_arr_size:
         return new_arr
+
+    # new_arr_size가 0이면
+    elif not new_arr_size:
+        return 0
 
     # 사이즈가 다르면 끝
     else:
@@ -49,36 +55,56 @@ def f(array, year):
 
 
 def bfs(new_arr):
+    # pprint(new_arr)
     visited = [[False]*m for _ in range(n)]
-    visited[0][0] = True
-    q = deque([[0, 0]])
+
+    start_row = -1
+    for i in range(n):
+        for j in range(m):
+            if new_arr[i][j]:
+                start_row = i
+                start_col = j
+                break
+        if start_row != -1:
+            break
+    if start_row == -1:
+        return
+    # print('sr, sc : ', start_row, start_col)
+    visited[start_row][start_col] = True
+    q = deque([[start_row, start_col]])
     size = 0
 
     while q:
         current_row, current_col = q.popleft()
+        # print('current_row :', current_row)
+        # print('current_col :', current_col)
+        # print()
         size += 1
 
         # 값이 있으면
-        if new_arr[current_row][current_col]:
-            for dij in range(4):
-                n_r = current_row + di[dij]
-                n_c = current_col + dj[dij]
+        for dij in range(4):
+            n_r = current_row + di[dij]
+            n_c = current_col + dj[dij]
 
-                if 0 <= n_r < n and 0 <= n_c < m and not visited[n_r][n_c]:
-                    visited[n_r][n_c] = True
-                    q.append([n_r, n_c])
+            if 0 <= n_r < n and 0 <= n_c < m and not visited[n_r][n_c] and new_arr[n_r][n_c]:
+                visited[n_r][n_c] = True
+                q.append([n_r, n_c])
 
     return size
 
+
 ans = 0
+
 while True:
     arr = f(arr, ans)
     if arr == ans:
         break
 
+    # size가 없어서 0이 나오면
+    elif arr == 0:
+        ans = 0
+        print(ans)
+        exit()
     ans += 1
 
-
-
-
-pprint(ans)
+print(ans+1)
