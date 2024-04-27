@@ -1,4 +1,4 @@
-ls = sorted(list(input()))
+ls = list(input())
 # print(ls)
 
 zero_count = ls.count('0')
@@ -8,10 +8,12 @@ one_count = ls.count('1')
 zero_count //= 2
 one_count //= 2
 
-if zero_count == 0:
-    exit(print(''.join(ls[zero_count:])))
+for _ in range(one_count):
+    ls.remove('1')
 
-elif one_count == 0:
-    exit(print(''.join(ls[zero_count:])))
+ls = ls[::-1]
 
-print(''.join(ls[zero_count:-one_count]))
+for _ in range(zero_count):
+    ls.remove('0')
+
+print(''.join(ls[::-1]))
