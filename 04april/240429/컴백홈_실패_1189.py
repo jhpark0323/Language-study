@@ -1,3 +1,5 @@
+from collections import deque
+
 '''
 백트래킹으로 다시 풀어보기
 '''
@@ -10,12 +12,12 @@ def dfs(row, col):
     visited = [[0] * c for _ in range(r)]
     visited[row][col] = 1
     # 행, 열, 거리, 지나온 길
-    q = [[row, col, 1, []]]
+    q = deque([[row, col, 1, []]])
     ans = 0
     passed_ls = []
 
     while q:
-        current_row, current_col, count, ls = q.pop()
+        current_row, current_col, count, ls = q.popleft()
         visited[current_row][current_col] = 1
         print('current_row :', current_row)
         print('current_col :', current_col)
@@ -28,14 +30,14 @@ def dfs(row, col):
             ans += 1
             passed_ls.append(ls)
             print(ans)
-            visited = [[0] * c for _ in range(r)]
-            visited[row][col] = 1
+            # visited = [[0] * c for _ in range(r)]
+            # visited[row][col] = 1
             continue
 
         # 거리가 k이상이면 그냥 넘김
         elif count >= k:
-            visited = [[0] * c for _ in range(r)]
-            visited[row][col] = 1
+            # visited = [[0] * c for _ in range(r)]
+            # visited[row][col] = 1
             continue
 
         for dij in range(4):
