@@ -6,14 +6,20 @@ bn = list(map(int, input().split()))
 m = int(input())
 cn = list(map(int, input().split()))
 
-def qstack(element):
-    for i in range(n):
-        # stack일 때는 그냥 넘어가도 됨
-        # q 일때
-        if not an[i]:
-            element, bn[i] = bn[i], element
+ls = []
+i = 0
+for j in range(n-1, -1, -1):
+    # 뽑았을 때 0이면
+    if not an[j]:
+        ls.append(bn[j])
+        i += 1
+        print(bn[j], end = ' ')
 
-    return element
+        if i == m:
+            break
+# for문을 다 돌았음에도 i가 m을 채우지 못하면
+else:
+    for j in range(m-i):
+        print(cn[j], end=' ')
 
-for insert in cn:
-    print(qstack(insert), end=' ')
+
