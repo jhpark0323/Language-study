@@ -47,18 +47,6 @@ def another(r, c):
         if 0 <= r+di[i] < n and 0 <= c+dj[i] < m:
             new_ans += arr[r+di[i]][c+dj[i]]
             cnt += 1
-
-    # cnt가 3보다 작으면 그냥 return
-    if cnt < 3:
-        return
-
-    # 3칸이면
-    if cnt == 3:
-        # 비교
-        if ans < new_ans:
-            ans = new_ans
-        return
-
     # 4칸이면
     if cnt == 4:
         # 제일 작은거 하나만빼서 최댓값 만들기
@@ -69,15 +57,24 @@ def another(r, c):
             ans = new_ans
         return
 
+    # 3칸이면
+    elif cnt == 3:
+        # 비교
+        if ans < new_ans:
+            ans = new_ans
+        return
+
+
 ans = 0
+visited = [[False] * m for _ in range(n)]
 # 전체를 다 돌며 시작위치를 순회
 for row in range(n):
     for col in range(m):
-        visited = [[False] * m for _ in range(n)]
         visited[row][col] = True
         # 디버깅용 거리 ls
         # path = []
         back(row, col, 1, arr[row][col])
         another(row, col)
+        visited[row][col] = False
 
 print(ans)
