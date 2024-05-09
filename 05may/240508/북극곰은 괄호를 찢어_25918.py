@@ -22,9 +22,9 @@ for i in range(n):
             stack.append(new_word)
             bear += 1
             if bear > max_bear:
-                bear = max_bear
-            print('같으면', bear)
-            print('같으면', max_bear)
+                max_bear = bear
+            # print('같으면', bear)
+            # print('같으면', max_bear)
 
     # stack이 비어있으면
     else:
@@ -32,8 +32,8 @@ for i in range(n):
         bear += 1
         if bear > max_bear:
             max_bear = bear
-        print(bear)
-        print(max_bear)
+        # print(bear)
+        # print(max_bear)
     #
     # print(stack)
 
