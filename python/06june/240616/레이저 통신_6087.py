@@ -19,13 +19,13 @@ def dijkstra():
     while pq:
         dist, x, y, dir = heappop(pq)
 
-        # if arr[x][y] == 'C':
+        if arr[x][y] == 'C':
         #     # print(dp)
         #     for ii in range(h):
         #         for jj in range(w):
         #             print(dp[ii][jj], end=' ')
         #         print()
-        #     return dp
+            return dp
 
         if dp[x][y] < dist:
             continue
@@ -35,7 +35,7 @@ def dijkstra():
             ny = y + dy[i]
 
             if 0 <= nx < h and 0 <= ny < w and arr[nx][ny] != '*':
-                if dir == i and dist < dp[nx][ny]:
+                if dir == i and dist <= dp[nx][ny]:
                     dp[nx][ny] = dist
                     heappush(pq, [dist, nx, ny, dir])
 
@@ -59,8 +59,23 @@ for i in range(h):
         if arr[i][j] == "C":
             start.append([i, j])
 distance = dijkstra()
-for ii in range(h):
-    for jj in range(w):
-        print(distance[ii][jj], end=' ')
-    print()
+# for ii in range(h):
+#     for jj in range(w):
+#         print(distance[ii][jj], end=' ')
+#     print()
 print(distance[start[1][0]][start[1][1]])
+
+'''
+15 10
+...*...***.C..*
+.*.*.*........*
+.*...*...*....*
+.*.*....****.**
+.*..**........*
+.**..********.*
+.*...*...*..*.*
+.**..***.*.**.*
+C........*.....
+..***..........
+답: 6
+'''
