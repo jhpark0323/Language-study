@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9209fffa-3130-4511-b8a1-066728e9a4ef" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/ScannerDemo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/src/ScannerDemo1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerDemo/src/ScannerDemo2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
