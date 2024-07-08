@@ -31,42 +31,34 @@ public class Main {
             animals[i][1] = Integer.parseInt(st.nextToken());
         }
 
-
-
 //        System.out.println(Arrays.deepToString(animals));
 
+        // animals를 순회하며 잡을수있는지 판단
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            int left = 0;
+            int right = m-1;
+            int[] target = animals[i];
 
-    }
+            while (left <= right) {
+                int mid = (left + right) / 2;
 
-    public static int CanShoot(int shooter) {
-        int ans = 0;
-        for (int[] animal : animals) {
-            int x = animal[0];
-            int y = animal[1];
+                if (Math.abs(shoot[mid] - target[0]) + target[1] <= l) {
+                    cnt++;
+                    break;
+                }
 
-            int count = Math.abs(x - shooter) + y;
-
-            if (count <= l) {
-                ans++;
-            }
-        }
-        return ans;
-    }
-
-    public static void BinarySearch() {
-        int canShoot = 0;
-        int left = 0;
-        int right = m-1;
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-
-            if (CanShoot(shoot[mid]) >= canShoot) {
+                if (target[0] > shoot[mid]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
 
             }
 
-
         }
+        System.out.println(cnt);
+
 
     }
 }
