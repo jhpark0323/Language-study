@@ -27,7 +27,7 @@ public class Main {
         // 처음과 끝도 추가
         arr.add(0, 0);
         arr.add(l);
-        System.out.println(arr);
+//        System.out.println(arr);
 
         max = 0;
         for (int i = 1; i < n+2; i++) {
@@ -37,25 +37,26 @@ public class Main {
             }
         }
 
-        int left = 0;
-        int right = l;
+        int left = 1;
+        int right = l-1;
 
         while (left <= right) {
             int mid = (left + right) / 2;
-            Measure(mid);
+            int count = 0;
+
+            for (int i = 1; i < arr.size(); i++) {
+                count += (arr.get(i) - arr.get(i-1) -1) / mid;
+            }
+
+            if (count > m) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
             
         }
 
-    }
+        System.out.println(left);
 
-    public static void Measure(int restArea) {
-        for (int i = 1; i < n+2; i++) {
-            // 처음으로 arr[i]가 restArea보다 커질 때
-            if (arr.get(i) > restArea) {
-                int len = Math.max(restArea-arr.get(i-1), arr.get(i) - restArea);
-                max = Math.max(max, len);
-                break;
-            }
-        }
     }
 }
