@@ -36,7 +36,7 @@ public class Main {
 
             int nephew = find(mid);
 //            System.out.println(nephew + " " + mid);
-            
+
 
             if (nephew >= m) {
                 left = mid + 1;
