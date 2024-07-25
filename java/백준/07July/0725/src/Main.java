@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        // 9024 두수의 합
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int testCases = Integer.parseInt(br.readLine());
