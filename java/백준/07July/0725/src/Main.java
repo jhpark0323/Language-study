@@ -30,13 +30,11 @@ public class Main {
             while (left < right) {
                 int newSum = arr[left] + arr[right];
 
-                // 원래의 sum과 k의 차이보다 새로 만든 newSum과 k의 차이가 더 작다면
+                // 원래의 sum과 k의 차이보다 새로 만든 newSum과 k의 차이가 같다면
                 if (Math.abs(k - sum) == Math.abs(newSum - k)) {
                     cnt++;
-                } else { // 아니면 sum, cnt 초기화
-                    if (Math.abs(k - sum) >= Math.abs(newSum - k)) {
-                        sum = newSum;
-                    }
+                } else if (Math.abs(k - sum) > Math.abs(newSum - k)) {
+                    sum = newSum;
                     cnt = 1;
                 }
 
