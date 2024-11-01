@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -29,71 +27,31 @@ public class Main {
         int answer = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                int newAns = dfs(i, j);
-                dp[i][j] = newAns;
-                if (newAns > answer) {
-                    answer = newAns;
-                }
+                answer = Math.max(answer, dfs(i, j));
+//                System.out.println(i + "," + j);
+//                System.out.println(Arrays.deepToString(dp));
             }
         }
 
         System.out.println(answer);
 //        System.out.println(Arrays.deepToString(dp));
     }
-    static class RowCol {
-        public int row;
-        public int col;
-        public int target;
-        public int cnt;
-        public RowCol(int r, int c, int t, int cnt) {
-            this.row = r;
-            this.col = c;
-            this.target = t;
-            this.cnt = cnt;
-        }
-        @Override
-        public String toString() {
-            return "(" + row + "," + col + ")";
-        }
-    }
     static int dfs(int row, int col) {
-        boolean[][] visited = new boolean[n][n];
-        visited[row][col] = true;
-        Deque<RowCol> stack = new LinkedList<>();
-        stack.push(new RowCol(row, col, arr[row][col], 1));
-        int ans = 0;
+        if (dp[row][col] != 0) return dp[row][col];
 
-        while (!stack.isEmpty()) {
-            RowCol cur = stack.pop();
-            int r = cur.row;
-            int c = cur.col;
-            int t = cur.target;
-            int cnt = cur.cnt;
+        dp[row][col] = 1;
 
-            if (ans < cnt) {
-                ans = cnt;
-            }
-
-            if (dp[r][c] != 0) {
-                int new_cnt = dp[r][c] + 1;
-                ans = Math.max(ans, new_cnt);
+        int next_row, next_col;
+        for (int dij = 0; dij < 4; dij++) {
+            next_row = row + di[dij];
+            next_col = col + dj[dij];
+            if (next_row < 0 || next_col < 0 || next_row >= n || next_col >= n) {
                 continue;
             }
-
-            for (int i = 0; i < 4; i++) {
-                int newRow = r + di[i];
-                int newCol = c + dj[i];
-
-                if (newRow < 0 || newRow >= n || newCol < 0 || newCol >= n) {
-                    continue;
-                }
-                if (!visited[newRow][newCol] && arr[newRow][newCol] > t) {
-                    stack.push(new RowCol(newRow, newCol, arr[newRow][newCol], cnt+1));
-                }
-
+            if (arr[next_row][next_col] > arr[row][col]) {
+                dp[row][col] = Math.max(dp[row][col], dfs(next_row, next_col) + 1);
             }
-
         }
-        return ans;
+        return dp[row][col];
     }
 }
