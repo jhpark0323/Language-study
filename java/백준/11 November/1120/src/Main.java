@@ -43,7 +43,7 @@ public class Main {
     static int bfs() {
         boolean[][] visited = new boolean[n][m];
         visited[x1-1][y1-1] = true;
-        Queue<Node> q = new LinkedList<>();
+        ArrayDeque<Node> q = new ArrayDeque<>();
         q.offer(new Node(x1-1, y1-1, 0));
         while (!q.isEmpty()) {
             Node cur = q.poll();
@@ -67,17 +67,16 @@ public class Main {
                     continue;
                 }
 
-                int nextCnt = curCnt;
-
-                if (arr[nextRow][nextCol] != '0') {
-                    nextCnt = curCnt + 1;
+                if (arr[nextRow][nextCol] == '0') {
+                    q.offerFirst(new Node(nextRow, nextCol, curCnt));
+                } else {
+                    q.offerLast(new Node(nextRow, nextCol, curCnt+1));
                 }
 
-                q.offer(new Node(nextRow, nextCol, nextCnt));
                 visited[nextRow][nextCol] = true;
             }
 
         }
-        return 0;
+        return -1;
     }
 }
