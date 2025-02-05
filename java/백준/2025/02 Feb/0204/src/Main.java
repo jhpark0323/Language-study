@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
+// bj_13424
 public class Main {
     static int n, m, k;
     static int[] arr, realDist;
